@@ -1,4 +1,4 @@
-import 'package:home_work/screens/register.dart';
+import 'package:home_work/screens/assignment-1/register.dart';
 import 'package:flutter/material.dart';
 
 class Authenticate extends StatefulWidget {
@@ -41,6 +41,8 @@ class _AuthenticateState extends State<Authenticate> {
                     TextFormField(
                       decoration: InputDecoration(
                         labelText: 'អ៊ីមែល',
+                        errorStyle: TextStyle(fontFamily: 'Khmer Battambang'),
+                        labelStyle: TextStyle(fontFamily: 'Khmer Battambang'),
                         border: OutlineInputBorder(),
                       ),
                       controller: _emailController,
@@ -62,6 +64,8 @@ class _AuthenticateState extends State<Authenticate> {
                       controller: _passwordController,
                       decoration: InputDecoration(
                         labelText: 'ពាក្យសម្ងាត់',
+                        errorStyle: TextStyle(fontFamily: 'Khmer Battambang'),
+                        labelStyle: TextStyle(fontFamily: 'Khmer Battambang'),
                         border: OutlineInputBorder(),
                       ),
                       validator: (value) {
@@ -95,7 +99,11 @@ class _AuthenticateState extends State<Authenticate> {
                     ),
                     child: Text(
                       'ចូលគណនី',
-                      style: TextStyle(fontSize: 18, color: Colors.white),
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.white,
+                        fontFamily: 'Khmer Battambang',
+                      ),
                     ),
                   ),
                 ),
@@ -103,7 +111,10 @@ class _AuthenticateState extends State<Authenticate> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('មិនទាន់មានគណនី? '),
+                      Text(
+                        'មិនទាន់មានគណនី? ',
+                        style: TextStyle(fontFamily: 'Khmer Battambang'),
+                      ),
                       GestureDetector(
                         onTap: () {
                           // Navigate to registration screen (to be implemented)
@@ -117,6 +128,7 @@ class _AuthenticateState extends State<Authenticate> {
                           style: TextStyle(
                             color: Colors.blue,
                             fontWeight: FontWeight.bold,
+                            fontFamily: 'Khmer Battambang',
                           ),
                         ),
                       ),

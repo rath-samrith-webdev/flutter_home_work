@@ -1,21 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:home_work/screens/splash.dart';
-import 'package:home_work/screens/splash_screen.dart';
+import 'package:home_work/screens/assignment-1/splash.dart';
+import 'package:home_work/screens/assignment-2/home_screen.dart';
+import 'package:home_work/screens/y3s2/splash_screen.dart';
 
-class Assigmentcases {
-  static const String case1 = 'case1';
-  static const String case2 = 'case2';
-  static const String case3 = 'case3';
+enum Assigmentcases {
+  case1,
+  case2,
+  case3;
 
-  /** Method to get the widget based on the case name */
-  Widget getCaseWidget(String caseName) {
-    switch (caseName) {
-      case case1:
-        return SplashScreen();
-      case case2:
-        return SplashScreenTwo();
-      default:
-        return SplashScreen();
+  String get title {
+    switch (this) {
+      case Assigmentcases.case1:
+        return "Year 3 Semester 2";
+      case Assigmentcases.case2:
+        return "Year 4 Semester 1 (1)";
+      case Assigmentcases.case3:
+        return "Year 4 Semester 1 (2)";
+    }
+  }
+
+  Widget get widget {
+    switch (this) {
+      case Assigmentcases.case1:
+        return const SplashScreen();
+      case Assigmentcases.case2:
+        return const SplashScreenTwo();
+      case Assigmentcases.case3:
+        return const HomeScreen();
     }
   }
 }

@@ -46,7 +46,11 @@ class SplashScreenTwo extends StatelessWidget {
                   ),
                   child: Text(
                     'ចាប់ផ្ដើម',
-                    style: TextStyle(fontSize: 18, color: Colors.white),
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.white,
+                      fontFamily: 'Khmer Battambang',
+                    ),
                   ),
                 ),
               ),

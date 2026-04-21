@@ -1,4 +1,4 @@
-import 'package:home_work/screens/otp.dart';
+import 'package:home_work/screens/assignment-1/otp.dart';
 import 'package:flutter/material.dart';
 
 class Register extends StatefulWidget {
@@ -85,9 +85,11 @@ class _RegisterState extends State<Register> {
                       onChanged: (_) => setState(() {}),
                       decoration: InputDecoration(
                         labelText: 'ឈ្មោះអ្នកប្រើ',
+                        labelStyle: TextStyle(fontFamily: 'Khmer Battambang'),
                         border: OutlineInputBorder(),
                         prefixIcon: Icon(Icons.person, color: Colors.blue),
                         suffixIcon: _buildSuffixIcon('username'),
+                        errorStyle: TextStyle(fontFamily: 'Khmer Battambang'),
                       ),
                       controller: _usernameController,
                       validator: (value) {
@@ -102,9 +104,11 @@ class _RegisterState extends State<Register> {
                       onChanged: (_) => setState(() {}),
                       decoration: InputDecoration(
                         labelText: 'អ៊ីមែល',
+                        labelStyle: TextStyle(fontFamily: 'Khmer Battambang'),
                         border: OutlineInputBorder(),
                         prefixIcon: Icon(Icons.email, color: Colors.blue),
                         suffixIcon: _buildSuffixIcon('email'),
+                        errorStyle: TextStyle(fontFamily: 'Khmer Battambang'),
                       ),
                       controller: _emailController,
                       validator: (value) {
@@ -126,7 +130,9 @@ class _RegisterState extends State<Register> {
                       onChanged: (_) => setState(() {}),
                       decoration: InputDecoration(
                         labelText: 'ពាក្យសម្ងាត់',
+                        labelStyle: TextStyle(fontFamily: 'Khmer Battambang'),
                         border: OutlineInputBorder(),
+                        errorStyle: TextStyle(fontFamily: 'Khmer Battambang'),
                         prefixIcon: Icon(Icons.lock, color: Colors.blue),
                         suffixIcon: _buildSuffixIcon('password'),
                       ),
@@ -165,7 +171,7 @@ class _RegisterState extends State<Register> {
                     ),
                     child: Text(
                       'បង្កើតគណនី',
-                      style: TextStyle(fontSize: 18, color: Colors.white),
+                      style: TextStyle(fontSize: 18, color: Colors.white,fontFamily: 'Khmer Battambang'),
                     ),
                   ),
                 ),

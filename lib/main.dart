@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:home_work/utils/assigmentcases.dart';
+import 'package:home_work/presenter.dart';
 
 void main() {
   Widget app = MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: Assigmentcases().getCaseWidget(Assigmentcases.case2),
+    home: Presenter(),
   );
   runApp(app);
 }

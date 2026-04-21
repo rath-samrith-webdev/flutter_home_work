@@ -7,7 +7,7 @@
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:home_work/screens/splash_screen.dart';
+import 'package:home_work/screens/y3s2/splash_screen.dart';
 
 void main() {
   testWidgets('Splash screen displays correctly', (WidgetTester tester) async {
