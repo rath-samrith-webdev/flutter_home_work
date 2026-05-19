@@ -8,24 +8,25 @@ class NotificationScreen extends StatelessWidget {
     final List<Map<String, String>> notifications = [
       {
         "title": "Booking Confirmed",
-        "message": "Your trip to Swiss Alps is confirmed! Check your email for details.",
+        "message":
+            "Your trip to Swiss Alps is confirmed! Check your email for details.",
         "time": "2h ago",
         "icon": "Icons.check_circle_outline",
-        "color": "teal"
+        "color": "teal",
       },
       {
         "title": "Flight Update",
         "message": "Your flight to Maldives has been delayed by 30 minutes.",
         "time": "5h ago",
         "icon": "Icons.flight_takeoff",
-        "color": "indigo"
+        "color": "indigo",
       },
       {
         "title": "Exclusive Offer",
         "message": "Get 20% off on your next booking with the code EXPLORE20.",
         "time": "1d ago",
         "icon": "Icons.local_offer_outlined",
-        "color": "cyan"
+        "color": "cyan",
       },
     ];
 
@@ -74,7 +75,7 @@ class NotificationScreen extends StatelessWidget {
               borderRadius: BorderRadius.circular(15),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.indigo.withOpacity(0.03),
+                  color: Colors.indigo.withValues(alpha: .03),
                   blurRadius: 5,
                   spreadRadius: 1,
                 ),
@@ -86,7 +87,7 @@ class NotificationScreen extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: displayColor.withOpacity(0.1),
+                    color: displayColor.withValues(alpha: .1),
                     shape: BoxShape.circle,
                   ),
                   child: Icon(displayIcon, color: displayColor, size: 24),

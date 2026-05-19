@@ -15,10 +15,12 @@ class ProfileScreen extends StatelessWidget {
               width: double.infinity,
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.vertical(bottom: Radius.circular(40)),
+                borderRadius: BorderRadius.vertical(
+                  bottom: Radius.circular(40),
+                ),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.indigo.withOpacity(0.05),
+                    color: Colors.indigo.withValues(alpha: .05),
                     blurRadius: 10,
                     spreadRadius: 2,
                   ),
@@ -29,7 +31,11 @@ class ProfileScreen extends StatelessWidget {
                   CircleAvatar(
                     radius: 50,
                     backgroundColor: Colors.teal[100],
-                    child: Icon(Icons.person, size: 60, color: Colors.teal[800]),
+                    child: Icon(
+                      Icons.person,
+                      size: 60,
+                      color: Colors.teal[800],
+                    ),
                   ),
                   SizedBox(height: 16),
                   Text(
@@ -53,9 +59,19 @@ class ProfileScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       _buildStatItem("Trips", "12"),
-                      Container(width: 1, height: 30, color: Colors.grey[200], margin: EdgeInsets.symmetric(horizontal: 20)),
+                      Container(
+                        width: 1,
+                        height: 30,
+                        color: Colors.grey[200],
+                        margin: EdgeInsets.symmetric(horizontal: 20),
+                      ),
                       _buildStatItem("Following", "248"),
-                      Container(width: 1, height: 30, color: Colors.grey[200], margin: EdgeInsets.symmetric(horizontal: 20)),
+                      Container(
+                        width: 1,
+                        height: 30,
+                        color: Colors.grey[200],
+                        margin: EdgeInsets.symmetric(horizontal: 20),
+                      ),
                       _buildStatItem("Reviews", "56"),
                     ],
                   ),
@@ -76,13 +92,23 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 16),
-                  _buildProfileMenuItem(Icons.person_outline, "Personal Information"),
+                  _buildProfileMenuItem(
+                    Icons.person_outline,
+                    "Personal Information",
+                  ),
                   _buildProfileMenuItem(Icons.payment, "Payment Methods"),
-                  _buildProfileMenuItem(Icons.notifications_none, "Notification Settings"),
+                  _buildProfileMenuItem(
+                    Icons.notifications_none,
+                    "Notification Settings",
+                  ),
                   _buildProfileMenuItem(Icons.security, "Security & Privacy"),
                   _buildProfileMenuItem(Icons.help_outline, "Help & Support"),
                   SizedBox(height: 16),
-                  _buildProfileMenuItem(Icons.logout, "Logout", isDestructive: true),
+                  _buildProfileMenuItem(
+                    Icons.logout,
+                    "Logout",
+                    isDestructive: true,
+                  ),
                 ],
               ),
             ),
@@ -103,18 +129,16 @@ class ProfileScreen extends StatelessWidget {
             color: Colors.indigo[900],
           ),
         ),
-        Text(
-          label,
-          style: TextStyle(
-            fontSize: 12,
-            color: Colors.indigo[300],
-          ),
-        ),
+        Text(label, style: TextStyle(fontSize: 12, color: Colors.indigo[300])),
       ],
     );
   }
 
-  Widget _buildProfileMenuItem(IconData icon, String title, {bool isDestructive = false}) {
+  Widget _buildProfileMenuItem(
+    IconData icon,
+    String title, {
+    bool isDestructive = false,
+  }) {
     return Container(
       margin: EdgeInsets.only(bottom: 12),
       padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),

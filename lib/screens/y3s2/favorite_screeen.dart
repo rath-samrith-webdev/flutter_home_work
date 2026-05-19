@@ -75,7 +75,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
               borderRadius: BorderRadius.circular(20),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.indigo.withOpacity(0.05),
+                  color: Colors.indigo.withValues(alpha: .05),
                   blurRadius: 10,
                   spreadRadius: 2,
                 ),
@@ -101,7 +101,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                           child: Container(
                             padding: EdgeInsets.all(6),
                             decoration: BoxDecoration(
-                              color: Colors.white.withOpacity(0.8),
+                              color: Colors.white.withValues(alpha: .8),
                               shape: BoxShape.circle,
                             ),
                             child: Icon(
