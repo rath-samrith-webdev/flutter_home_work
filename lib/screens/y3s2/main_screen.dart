@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:home_work/screens/notification_screen.dart';
-import 'package:home_work/screens/profile_screen.dart';
-import 'package:home_work/screens/home_screen.dart';
-import 'package:home_work/screens/favorite_screeen.dart';
+import 'package:home_work/screens/y3s2/notification_screen.dart';
+import 'package:home_work/screens/y3s2/profile_screen.dart';
+import 'package:home_work/screens/y3s2/home_screen.dart';
+import 'package:home_work/screens/y3s2/favorite_screeen.dart';
 
 class MainScreen extends StatefulWidget {
   @override

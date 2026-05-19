@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:home_work/screens/main_screen.dart';
+import 'package:home_work/screens/y3s2/main_screen.dart';
 
 class SplashScreen extends StatelessWidget {
 
