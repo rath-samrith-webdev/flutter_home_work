@@ -5,6 +5,7 @@ import 'package:home_work/screens/y3s2/home_screen.dart';
 import 'package:home_work/screens/y3s2/favorite_screeen.dart';
 
 class MainScreen extends StatefulWidget {
+  const MainScreen({super.key});
   @override
   State<StatefulWidget> createState() => _State();
 }

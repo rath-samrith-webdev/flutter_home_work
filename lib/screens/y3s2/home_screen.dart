@@ -43,13 +43,16 @@ class _HomeScreenState extends State<HomeScreen> {
                     shape: BoxShape.circle,
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.indigo.withOpacity(0.05),
+                        color: Colors.indigo.withValues(alpha: 0.05),
                         blurRadius: 5,
                         spreadRadius: 1,
                       ),
                     ],
                   ),
-                  child: Icon(Icons.notifications_none, color: Colors.indigo[900]),
+                  child: Icon(
+                    Icons.notifications_none,
+                    color: Colors.indigo[900],
+                  ),
                 ),
                 Positioned(
                   top: 8,
@@ -85,7 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   borderRadius: BorderRadius.circular(15),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.indigo.withOpacity(0.03),
+                      color: Colors.indigo.withValues(alpha: 0.03),
                       blurRadius: 10,
                       spreadRadius: 2,
                     ),
@@ -187,7 +190,10 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           Text(
             "See All",
-            style: TextStyle(color: Colors.teal[700], fontWeight: FontWeight.w500),
+            style: TextStyle(
+              color: Colors.teal[700],
+              fontWeight: FontWeight.w500,
+            ),
           ),
         ],
       ),
@@ -203,7 +209,7 @@ class _HomeScreenState extends State<HomeScreen> {
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.indigo.withOpacity(0.02),
+            color: Colors.indigo.withValues(alpha: 0.02),
             blurRadius: 5,
             spreadRadius: 1,
           ),
@@ -215,7 +221,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Container(
             padding: EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: color.withOpacity(0.1),
+              color: color.withValues(alpha: .1),
               shape: BoxShape.circle,
             ),
             child: Icon(icon, color: color, size: 28),
@@ -240,13 +246,10 @@ class _HomeScreenState extends State<HomeScreen> {
       margin: EdgeInsets.only(right: 16, bottom: 8),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(25),
-        image: DecorationImage(
-          image: AssetImage(imagePath),
-          fit: BoxFit.cover,
-        ),
+        image: DecorationImage(image: AssetImage(imagePath), fit: BoxFit.cover),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withValues(alpha: .1),
             blurRadius: 10,
             offset: Offset(0, 5),
           ),
@@ -260,7 +263,7 @@ class _HomeScreenState extends State<HomeScreen> {
             end: Alignment.bottomCenter,
             colors: [
               Colors.transparent,
-              Colors.indigo[900]!.withOpacity(0.8),
+              Colors.indigo[900]!.withValues(alpha: 0.8),
             ],
           ),
         ),
@@ -303,7 +306,7 @@ class _HomeScreenState extends State<HomeScreen> {
         borderRadius: BorderRadius.circular(15),
         boxShadow: [
           BoxShadow(
-            color: Colors.indigo.withOpacity(0.05),
+            color: Colors.indigo.withValues(alpha: .05),
             blurRadius: 5,
             spreadRadius: 1,
           ),
@@ -358,17 +361,14 @@ class _HomeScreenState extends State<HomeScreen> {
       margin: EdgeInsets.only(right: 16),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(25),
-        image: DecorationImage(
-          image: AssetImage(imagePath),
-          fit: BoxFit.cover,
-        ),
+        image: DecorationImage(image: AssetImage(imagePath), fit: BoxFit.cover),
       ),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(25),
           gradient: LinearGradient(
             colors: [
-              Colors.indigo[900]!.withOpacity(0.9),
+              Colors.indigo[900]!.withValues(alpha: 0.9),
               Colors.transparent,
             ],
           ),
@@ -389,10 +389,7 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(height: 4),
             Text(
               subtitle,
-              style: TextStyle(
-                color: Colors.teal[50],
-                fontSize: 13,
-              ),
+              style: TextStyle(color: Colors.teal[50], fontSize: 13),
             ),
             SizedBox(height: 12),
             ElevatedButton(
