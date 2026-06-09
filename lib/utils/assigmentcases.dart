@@ -3,6 +3,7 @@ import 'package:home_work/screens/api-screen/api_screen.dart';
 import 'package:home_work/screens/assignment-1/splash.dart';
 import 'package:home_work/screens/assignment-2/home_screen.dart';
 import 'package:home_work/screens/assignment-3/fruit_home_screen.dart';
+import 'package:home_work/screens/auth-firebase/splash.dart';
 import 'package:home_work/screens/db-connections/screens/home_screen.dart';
 import 'package:home_work/screens/y3s2/splash_screen.dart';
 import 'package:home_work/screens/exercise50pt/login_screen.dart';
@@ -14,6 +15,7 @@ enum Assigmentcases {
   case4,
   practicedb,
   exercise50pt,
+  firebaseAuth,
   apiCalls;
 
   String get title {
@@ -32,6 +34,8 @@ enum Assigmentcases {
         return "50pt Exercise";
       case Assigmentcases.apiCalls:
         return "Api Calls";
+      case Assigmentcases.firebaseAuth:
+        return "Firebase Authentication";
     }
   }
 
@@ -51,6 +55,8 @@ enum Assigmentcases {
         return const LoginScreen();
       case Assigmentcases.apiCalls:
         return const ApiScreen();
+      case Assigmentcases.firebaseAuth:
+        return const SplashScreenThree();
     }
   }
 }
