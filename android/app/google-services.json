@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "907935480133",
+    "project_id": "flutter-home-work-552ce",
+    "storage_bucket": "flutter-home-work-552ce.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:907935480133:android:f71902091ae04de6aea62c",
+        "android_client_info": {
+          "package_name": "com.example.home_work"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "907935480133-insr44g0k619qh5vrjcvujbquen49atj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.home_work",
+            "certificate_hash": "40d21a2a38b77332f59e0361d5681e8c0158ef84"
+          }
+        },
+        {
+          "client_id": "907935480133-lk7mkijsr42jens394vdg3tau87d43ek.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPIbzK98b0cCaY4nHmAxSMf2kwLQuBQ4U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "907935480133-lk7mkijsr42jens394vdg3tau87d43ek.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "907935480133-60melao2rtsc2p9e1tv9f8mrb6toijpd.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.homeWork"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
