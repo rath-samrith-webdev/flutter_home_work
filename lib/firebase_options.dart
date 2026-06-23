@@ -25,15 +25,9 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -47,29 +41,50 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCplGD1Pgqf-3jrlW9emNzoNvmPRJ6mEd8',
-    appId: '1:907935480133:web:81b569f16c1133c4aea62c',
-    messagingSenderId: '907935480133',
-    projectId: 'flutter-home-work-552ce',
-    authDomain: 'flutter-home-work-552ce.firebaseapp.com',
-    storageBucket: 'flutter-home-work-552ce.firebasestorage.app',
-    measurementId: 'G-804MVNX8XX',
+    apiKey: const String.fromEnvironment('WEB_API_KEY'),
+    appId: const String.fromEnvironment('WEB_APP_ID'),
+    messagingSenderId: const String.fromEnvironment('MESSAGING_SENDER_ID'),
+    projectId: const String.fromEnvironment('PROJECT_ID'),
+    authDomain: const String.fromEnvironment('AUTH_DOMAIN'),
+    storageBucket: const String.fromEnvironment('STORAGE_BUCKET'),
+    measurementId: const String.fromEnvironment('WEB_MEASUREMENT_ID'),
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAPIbzK98b0cCaY4nHmAxSMf2kwLQuBQ4U',
-    appId: '1:907935480133:android:f71902091ae04de6aea62c',
-    messagingSenderId: '907935480133',
-    projectId: 'flutter-home-work-552ce',
-    storageBucket: 'flutter-home-work-552ce.firebasestorage.app',
+    apiKey: const String.fromEnvironment('ANDROID_API_KEY'),
+    appId: const String.fromEnvironment('ANDROID_APP_ID'),
+    messagingSenderId: const String.fromEnvironment('MESSAGING_SENDER_ID'),
+    projectId: const String.fromEnvironment('PROJECT_ID'),
+    storageBucket: const String.fromEnvironment('STORAGE_BUCKET'),
+  );
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: const String.fromEnvironment('IOS_API_KEY'),
+    appId: const String.fromEnvironment('IOS_APP_ID'),
+    messagingSenderId: const String.fromEnvironment('MESSAGING_SENDER_ID'),
+    projectId: const String.fromEnvironment('PROJECT_ID'),
+    storageBucket: const String.fromEnvironment('STORAGE_BUCKET'),
+    androidClientId: const String.fromEnvironment('ANDROID_CLIENT_ID'),
+    iosClientId: const String.fromEnvironment('IOS_CLIENT_ID'),
+    iosBundleId: const String.fromEnvironment('IOS_BUNDLE_ID'),
+  );
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: const String.fromEnvironment('MACOS_API_KEY'),
+    appId: const String.fromEnvironment('MACOS_APP_ID'),
+    messagingSenderId: const String.fromEnvironment('MESSAGING_SENDER_ID'),
+    projectId: const String.fromEnvironment('PROJECT_ID'),
+    storageBucket: const String.fromEnvironment('STORAGE_BUCKET'),
+    androidClientId: const String.fromEnvironment('ANDROID_CLIENT_ID'),
+    iosClientId: const String.fromEnvironment('MACOS_CLIENT_ID'),
+    iosBundleId: const String.fromEnvironment('MACOS_BUNDLE_ID'),
   );
 
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBzIfp5HmzAhik6OlexmnRj1su3iql7rGA',
-    appId: '1:907935480133:ios:1f99ac2debaa27f4aea62c',
-    messagingSenderId: '907935480133',
-    projectId: 'flutter-home-work-552ce',
-    storageBucket: 'flutter-home-work-552ce.firebasestorage.app',
-    iosBundleId: 'com.example.homeWork',
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: const String.fromEnvironment('WINDOWS_API_KEY'),
+    appId: const String.fromEnvironment('WINDOWS_APP_ID'),
+    messagingSenderId: const String.fromEnvironment('MESSAGING_SENDER_ID'),
+    projectId: const String.fromEnvironment('PROJECT_ID'),
+    authDomain: const String.fromEnvironment('AUTH_DOMAIN'),
+    storageBucket: const String.fromEnvironment('STORAGE_BUCKET'),
+    measurementId: const String.fromEnvironment('WINDOWS_MEASUREMENT_ID'),
   );
 }

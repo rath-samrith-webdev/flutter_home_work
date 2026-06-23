@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'auth_service.dart';
+import 'homescreen.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -14,6 +17,40 @@ class _RegisterState extends State<Register> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _auth = FirebaseAuth.instance;
+
+  bool _isLoading = false;
+
+  Future<void> _handleSocialSignIn(Future<UserCredential?> Function() signInMethod) async {
+    setState(() {
+      _isLoading = true;
+    });
+
+    try {
+      final userCredential = await signInMethod();
+      if (userCredential != null) {
+        if (!context.mounted) return;
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('ចូលគណនីបានជោគជ័យ')),
+        );
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (_) => HomeScreen()),
+          (route) => false,
+        );
+      }
+    } catch (e) {
+      if (!context.mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error: $e')),
+      );
+    } finally {
+      if (mounted) {
+        setState(() {
+          _isLoading = false;
+        });
+      }
+    }
+  }
 
   @override
   void dispose() {
@@ -152,16 +189,41 @@ class _RegisterState extends State<Register> {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () async {
-                      if (_formKey.currentState!.validate()) {
-                        // Perform registration action (to be implemented)
-                        await _auth.createUserWithEmailAndPassword(
-                          email: _emailController.text.trim(),
-                          password: _passwordController.text.trim(),
-                        );
-                        //TODO: Handle successful registration (e.g., navigate to another screen)
-                      }
-                    },
+                    onPressed: _isLoading
+                        ? null
+                        : () async {
+                            if (_formKey.currentState!.validate()) {
+                              setState(() {
+                                _isLoading = true;
+                              });
+                              try {
+                                await _auth.createUserWithEmailAndPassword(
+                                  email: _emailController.text.trim(),
+                                  password: _passwordController.text.trim(),
+                                );
+                                if (!context.mounted) return;
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(content: Text('ចុះឈ្មោះបានជោគជ័យ')),
+                                );
+                                Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(builder: (_) => HomeScreen()),
+                                  (route) => false,
+                                );
+                              } on FirebaseAuthException catch (e) {
+                                if (!context.mounted) return;
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(content: Text('Error: ${e.message}')),
+                                );
+                              } finally {
+                                if (mounted) {
+                                  setState(() {
+                                    _isLoading = false;
+                                  });
+                                }
+                              }
+                            }
+                          },
                     style: ButtonStyle(
                       backgroundColor: WidgetStatePropertyAll(Colors.blue),
                       padding: WidgetStatePropertyAll(
@@ -171,15 +233,65 @@ class _RegisterState extends State<Register> {
                         RoundedRectangleBorder(borderRadius: BorderRadius.zero),
                       ),
                     ),
-                    child: Text(
-                      'បង្កើតគណនី',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.white,
-                        fontFamily: 'Khmer Battambang',
+                    child: _isLoading
+                        ? const SizedBox(
+                            height: 22,
+                            width: 22,
+                            child: CircularProgressIndicator(
+                              color: Colors.white,
+                              strokeWidth: 2,
+                            ),
+                          )
+                        : const Text(
+                            'បង្កើតគណនី',
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.white,
+                              fontFamily: 'Khmer Battambang',
+                            ),
+                          ),
+                  ),
+                ),
+
+                const SizedBox(height: 20),
+
+                Row(
+                  children: [
+                    Expanded(child: Divider(color: Colors.grey.shade400)),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Text(
+                        'ឬចុះឈ្មោះជាមួយ',
+                        style: TextStyle(
+                          color: Colors.grey.shade600,
+                          fontFamily: 'Khmer Battambang',
+                        ),
                       ),
                     ),
-                  ),
+                    Expanded(child: Divider(color: Colors.grey.shade400)),
+                  ],
+                ),
+
+                const SizedBox(height: 20),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    IconButton(
+                      onPressed: _isLoading
+                          ? null
+                          : () => _handleSocialSignIn(AuthService().signInWithGoogle),
+                      icon: const FaIcon(FontAwesomeIcons.google, color: Colors.red),
+                      iconSize: 40,
+                    ),
+                    IconButton(
+                      onPressed: _isLoading
+                          ? null
+                          : () => _handleSocialSignIn(AuthService().signInWithFacebook),
+                      icon: const FaIcon(FontAwesomeIcons.facebook, color: Colors.blue),
+                      iconSize: 40,
+                    ),
+                  ],
                 ),
               ],
             ),

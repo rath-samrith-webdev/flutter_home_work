@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'auth_service.dart';
 import 'register.dart';
 import 'homescreen.dart';
 
@@ -29,7 +31,7 @@ class _FireBaseAuthState extends State<FireBaseAuth> {
         password: _passwordController.text.trim(),
       );
 
-      if (!mounted) return;
+      if (!context.mounted) return;
 
       ScaffoldMessenger.of(
         context,
@@ -60,13 +62,13 @@ class _FireBaseAuthState extends State<FireBaseAuth> {
           message = e.message ?? 'មានបញ្ហាក្នុងការចូលគណនី';
       }
 
-      if (!mounted) return;
+      if (!context.mounted) return;
 
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(SnackBar(content: Text(message)));
     } catch (e) {
-      if (!mounted) return;
+      if (!context.mounted) return;
 
       ScaffoldMessenger.of(
         context,
@@ -77,6 +79,37 @@ class _FireBaseAuthState extends State<FireBaseAuth> {
       setState(() {
         _isLoading = false;
       });
+    }
+  }
+
+  Future<void> _handleSocialSignIn(Future<UserCredential?> Function() signInMethod) async {
+    setState(() {
+      _isLoading = true;
+    });
+
+    try {
+      final userCredential = await signInMethod();
+      if (userCredential != null) {
+        if (!context.mounted) return;
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('ចូលគណនីបានជោគជ័យ')),
+        );
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (_) => HomeScreen()),
+        );
+      }
+    } catch (e) {
+      if (!context.mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error: $e')),
+      );
+    } finally {
+      if (mounted) {
+        setState(() {
+          _isLoading = false;
+        });
+      }
     }
   }
 
@@ -198,9 +231,53 @@ class _FireBaseAuthState extends State<FireBaseAuth> {
                   ),
                 ),
 
+                const SizedBox(height: 20),
+
+                Row(
+                  children: [
+                    Expanded(child: Divider(color: Colors.grey.shade400)),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Text(
+                        'ឬចូលជាមួយ',
+                        style: TextStyle(
+                          color: Colors.grey.shade600,
+                          fontFamily: 'Khmer Battambang',
+                        ),
+                      ),
+                    ),
+                    Expanded(child: Divider(color: Colors.grey.shade400)),
+                  ],
+                ),
+
+                const SizedBox(height: 20),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    IconButton(
+                      onPressed: _isLoading
+                          ? null
+                          : () => _handleSocialSignIn(AuthService().signInWithGoogle),
+                      icon: const FaIcon(FontAwesomeIcons.google, color: Colors.red),
+                      iconSize: 40,
+                    ),
+                    IconButton(
+                      onPressed: _isLoading
+                          ? null
+                          : () => _handleSocialSignIn(AuthService().signInWithFacebook),
+                      icon: const FaIcon(FontAwesomeIcons.facebook, color: Colors.blue),
+                      iconSize: 40,
+                    ),
+                  ],
+                ),
+
+                const SizedBox(height: 20),
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+
                     const Text(
                       'មិនទាន់មានគណនី? ',
                       style: TextStyle(fontFamily: 'Khmer Battambang'),
